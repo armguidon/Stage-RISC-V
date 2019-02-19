@@ -181,11 +181,62 @@ localparam PERT_REGS = 15;
 
     .ext_perf_counters_i            ( ext_perf_counters_i     )
   );
+  //------------------------------------------------------------
   // signaux de routage 
+    
+  logic           irq_interm
+  logic   [4:0]   irq_id_interm;
+  logic           irq_ack_interm;
+  logic          irq_o_interm;
   
+  logic  [4:0]   irq_id_o_interm;
+  logic          irq_ack_o_interm;
+  logic  [31:0]   irq_mode_interm;
+  logic  [31:0]   irq_min_cycles_interm;
+  
+  logic  [31:0]   irq_max_cycles_interm;
+  logic  [31:0]   irq_min_id_interm;
+  logic  [31:0]   irq_max_id_interm;
+  logic [31:0]   irq_act_id_o_interm;
+  
+  logic          irq_id_we_o_interm;
+  logic  [31:0]   irq_pc_id_interm;
+  logic  [31:0]   irq_pc_trig_interm;
+//----------------------------------------------------------------
   
   
   // random_interrupt instance 
-  random_interrupt random_interrupt_i
+  random_interrupt random_interrupt_i (
+  
+       .rst_ni                    (rst_ni),
+       .clk_i                     (clk_i),
+       .irq_i                     (irq_interm),
+       .irq_id_i                  (irq_id_interm),
+       .irq_ack_i                 (irq_ack_interm),
+       .irq_o                     (irq_o_interm),
+       .irq_id_o                  (irq_id_o_interm),
+       .irq_ack_o                 (irq_ack_o_interm),
+       .irq_mode_i                (irq_mode_interm),
+       .irq_min_cycles_i          (irq_min_cycles_interm),
+       .irq_max_cycles_i          (irq_max_cycles_interm),
+       .irq_min_id_i              (irq_act_id_o_interm),
+       .irq_max_id_i              (irq_id_we_o_interm),
+       .irq_act_id_o              (irq_act_id_o_interm),
+       .irq_id_we_o               (irq_id_we_o_interm),
+       .irq_pc_id_i               (irq_pc_id_interm),
+       .irq_pc_trig_i             (irq_pc_trig_interm)
+);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  );
+  
   
   
