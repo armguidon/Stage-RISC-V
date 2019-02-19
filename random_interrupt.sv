@@ -82,7 +82,89 @@ begin
         end
     endcase
 end
+ //------------------------------------------------------------------------------------------------------
  
+ 
+ //Random Process
+ 
+initial
+begin
+    automatic rand_irq_cycles wait_cycles = new();
+    automatic rand_irq_id value = new();
+ 
+    int temp,i, min_irq_cycles, max_irq_cycles, min_irq_id, max_irq_id;
+ 
+    irq_id_monitor = 1'b0;
+    irq_id_monitor = '0;
+    while(1) begin
+
+        irq_id_monitor = 1'b0;
+        irq_id_monitor = '0;
+
+        @(posedge clk_i);
+
+        wait(irq_mode_q == RANDOM);
+        min_irq_id     = irq_min_id_i;
+        max_irq_id     = irq_max_id_i;
+        min_irq_cycles = irq_min_cycles_i;
+        max_irq_cycles = irq_max_cycles_i;
+
+        temp = value.randomize() with{
+            n >= min_irq_id;
+            n <= max_irq_id;
+        };
+        temp = wait_cycles.randomize() with{
+            n >= min_irq_cycles;
+            n <= max_irq_cycles;
+        };
+        while(wait_cycles.n != 0) begin
+            @(posedge clk_i);
+            wait_cycles.n--;
+        end
+
+        irq_id_monitor = value.n;
+        irq_monitor    = 1'b1;
+        irq_act_id_o   = value.n;
+        @(posedge clk_i);
+        //we don't care about the ack in this mode
+        for(i=0; i<max_irq_cycles; i++) begin
+            @(posedge clk_i);
+        end
+    end
+end
+
+
+//Monitor Process
+initial
+begin
+    int pc_value;
+    irq_monitor    = 1'b0;
+    irq_id_monitor = '0;
+    pc_value = 0;
+    wait(irq_mode_q == PC_TRIG);
+    wait(irq_pc_id_i == irq_pc_trig_i);
+    irq_monitor    = 1'b1;
+    irq_id_monitor = PC_TRIG_ID;
+    while(irq_ack_i != 1'b1) begin
+        @(posedge clk_i);   //Keep the request high until the acknowledge is received
+    end
+    @(posedge clk_i);
+    irq_monitor    = 1'b0;
+    irq_id_monitor = '0;
+end
+
+initial
+begin
+    while(1) begin
+        irq_id_we_o = 1'b0;
+        wait(irq_ack_i == 1'b1);
+        irq_id_we_o = 1'b1;   //Give the write enable to store the core response
+        @(posedge clk_i);
+    end
+end
+
+
+endmodule
  
  
  
