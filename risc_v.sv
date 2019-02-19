@@ -92,44 +92,9 @@ module tb_riscv_core
 );
 
 localparam PERT_REGS = 15;
-
-//////////////////////////////////////////////////////////////
-//Internal signals to connect core and perturbation module
-/////////////////////////////////////////////////////////////
-
-// Additional instruction signals
-
-logic                          instr_req_int;
-logic                          instr_grant_int;
-logic                          instr_rvalid_int;
-logic [31:0]                   instr_addr_int;
-logic [INSTR_RDATA_WIDTH-1:0]  instr_rdata_int;
-
-// Additional data signals
-logic                          data_req_int;
-logic                          data_grant_int;
-logic                          data_rvalid_int;
-logic                          data_we_int;
-logic [3:0]                    data_be_int;
-logic [31:0]                   data_addr_int;
-logic [31:0]                   data_wdata_int;
-logic [31:0]                   data_rdata_int;
-
-// Additional signals for pertubation/debug registers
-logic                          debug_req_int;
-logic                          debug_grant_int;
-logic                          debug_rvalid_int;
-logic                          debug_we_int;
-logic [14:0]                   debug_addr_int;
-logic [31:0]                   debug_wdata_int;
-logic [31:0]                   debug_rdata_int;
-
-// Additional interrupt signals
-logic                          irq_int;
-logic                          irq_ack_int;
-logic [4:0]                    irq_id_int;
-logic [4:0]                    irq_core_resp_id_int;
-
+  
+//------------------------------------------------------------------
+//------------------------------------------------------------------
 
 
   riscv_core
@@ -149,6 +114,8 @@ logic [4:0]                    irq_core_resp_id_int;
     .APU_NDSFLAGS_CPU               ( APU_NDSFLAGS_CPU         ),
     .APU_NUSFLAGS_CPU               ( APU_NUSFLAGS_CPU         )
     )
+  
+  
   RISCV_CORE
   (
     .clk_i                          ( clk_i                   ),
@@ -214,3 +181,9 @@ logic [4:0]                    irq_core_resp_id_int;
 
     .ext_perf_counters_i            ( ext_perf_counters_i     )
   );
+  // signaux de routage 
+  
+  
+  
+  // random_interrupt instance 
+  
