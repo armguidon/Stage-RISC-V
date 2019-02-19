@@ -186,4 +186,6 @@ localparam PERT_REGS = 15;
   
   
   // random_interrupt instance 
+  random_interrupt random_interrupt_i
+  
   
