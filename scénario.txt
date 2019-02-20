@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------------------------------------
+
+
+1 - instancier le crypto master DMA-AES
+     - generer des acces memoires (lecture/ecriture) aleatoire dans MEM9, essayer d'ecrire a cote des emplacement dedié au instruction du risc
+     - soliciter tout les registre du risc
+     - voir si on peut jouer sur le fonctionnement du Multilayer
+--------------------------------------------------------------------------------------------------------------
+2 - AHB bus:
+    - essayer une demande de data et une instruction en meme temps sur le bus AHB
+--------------------------------------------------------------------------------------------------------------
+3 - interruptions 
+    - s'inspirer de "apb_interrupt_cntrl" github
+    - generer du trafic sur le bus https://github.com/pulp-platform/udma_external_per/tree/master/rtl
