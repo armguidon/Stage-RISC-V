@@ -4,7 +4,7 @@
 1 - instancier le crypto master DMA-AES
      - generer des acces memoires (lecture/ecriture) aleatoire dans MEM9, essayer d'ecrire a cote des emplacement dedié au instruction du risc
      - soliciter tout les registre du risc
-     - voir si on peut jouer sur le fonctionnement du Multilayer
+     - voir si on peut jouer sur le fonctionnement du Multilayer pour le saturer 
 --------------------------------------------------------------------------------------------------------------
 2 - AHB bus:
     - essayer une demande de data et une instruction en meme temps sur le bus AHB
