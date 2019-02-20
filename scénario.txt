@@ -11,8 +11,6 @@ slproj ip_whifer ineo         ---option2
 
 
 
-
-
 -------------------------------------------------------------------------------------------------------------
 1 - instancier le crypto master DMA-AES
      - generer des acces memoires (lecture/ecriture) aleatoire dans MEM9, essayer d'ecrire a cote des emplacement dedié au instruction du risc
