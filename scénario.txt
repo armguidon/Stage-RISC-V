@@ -12,3 +12,25 @@
 3 - interruptions 
     - s'inspirer de "apb_interrupt_cntrl" github
     - generer du trafic sur le bus https://github.com/pulp-platform/udma_external_per/tree/master/rtl
+
+
+
+## boucle asm : 
+
+
+faire en sorte d'attaquer la DTCM et la ITCM en faisant tourner un code dans la DMA du crypto
+
+// x : condition de sortie.
+asm : 
+
+       LI $3, 0  
+       LI $4, x
+
+Loop : Beq $3 $4 Exit
+       addi $3,$3,1
+       Syscall
+       j Loop
+       
+Exit : 
+       
+       
