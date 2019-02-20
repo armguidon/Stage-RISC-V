@@ -1,6 +1,19 @@
 ------------------------------------------------------------------------------------------------------------
+-- rejoindre le projet :
+slproj pg_ineo2 revA0         ---option1
+slproj ip_whifer ineo         ---option2
+
+-- cd modules/dig_wlan_riscv  ---choix de modules
+
+-- slflow sim "nom testcase" --gui
 
 
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
 1 - instancier le crypto master DMA-AES
      - generer des acces memoires (lecture/ecriture) aleatoire dans MEM9, essayer d'ecrire a cote des emplacement dedié au instruction du risc
      - soliciter tout les registre du risc
