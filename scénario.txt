@@ -10,6 +10,12 @@ slproj ip_whifer ineo         ---option2
 reseau externe
 
 https://enable.silabs.com.
+-----------------------------------------------------------------------------------------------------------
+
+generer une clock 
+ 
+ clk <= not (clk) after "time"
+ 
 
 
 
