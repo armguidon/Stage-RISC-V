@@ -16,8 +16,13 @@ generer une clock
  
  clk <= not (clk) after "time"
  
+----------------------------------------------------------------------------------------------------------
 
-
+module questasim verifier version
+cd RISCY
+cd tb
+cd top_tb
+sim.sh
 
 
 
